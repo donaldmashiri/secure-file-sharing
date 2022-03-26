@@ -26,7 +26,7 @@
                 <form action="" method="post">
                   <div class="form-group">
                           <label>PASSCODE </label>
-                          <input type="password" name="passcode" class="form-control p_input">
+                          <input type="password" name="passcode" class="form-control p_input" minlength="4" required>
                   </div>
               
                   <div class="text-center">

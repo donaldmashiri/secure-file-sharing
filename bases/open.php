@@ -47,12 +47,12 @@
                                         <div class="form-group text-dark">
                                             <label for="content">Password</label>
                                             <input type="password" name="password" class="form-control bg-white"
-                                                   placeholder="Enter Passcode">
+                                                   placeholder="Enter Passcode" minlength="4" required>
                                         </div>
                                         <div class="form-group text-dark">
                                             <label for="content">Authentication Keys</label>
                                             <input type="password" name="keys" class="form-control bg-white"
-                                                   placeholder="Enter Authentication Keys">
+                                                   placeholder="Enter Authentication Keys" minlength="4" required>
                                         </div>
 
                                         <button name="submit" type="submit" class="btn btn-dark float-right"> Submit</button>

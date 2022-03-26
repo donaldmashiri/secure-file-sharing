@@ -69,7 +69,7 @@
                                                 <div class="form-group text-dark">
                                                     <label for="content">Title</label>
                                                     <input type="text" name="doc_title" class="form-control bg-white"
-                                                           placeholder="Enter Title">
+                                                           placeholder="Enter Title" minlength="4" required>
                                                 </div>
                                                 <div class="form-group text-dark">
                                                     <label for="content">Confidential Level</label>
@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="form-group text-dark">
                                                     <label for="content">Content</label>
-                                                    <input  id="content" type="hidden" name="content">
+                                                    <input  id="content" type="hidden" name="content" required>
                                                     <trix-editor input="content"></trix-editor>
                                                 </div>
                                                 <button name="create" type="submit" class="btn btn-dark float-right"> Create File</button>
