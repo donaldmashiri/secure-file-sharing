@@ -128,8 +128,8 @@
                                         </p>
                                         <small>  <?php echo $date_created ?></small>
                                         <hr>
-                                        <div class="form-group text-dark">
-                                            <?php echo $doc_file ?>
+                                        <div class="form-group text-dark"> <small>click text to download if it a file</small>
+                                            <a href="../hq/<?php echo $doc_file ?>">   <?php echo $doc_file ?></a>
                                         </div>
                                         <hr>
                                     </div>

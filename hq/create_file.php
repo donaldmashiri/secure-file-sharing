@@ -1,4 +1,7 @@
-<?php include "../includes/header.php"; ?>
+<?php include "../includes/header.php";
+
+$type = $_GET['file'];
+?>
 
     <div class="container-scroller">
     <!-- partial:partials/_sidebar.html -->
@@ -48,7 +51,17 @@
                                     if(isset($_POST['create'])){
                                         $level = $conn -> real_escape_string($_POST['level']);
                                         $doc_title = $conn -> real_escape_string($_POST['doc_title']);
+
+                                    if($type === 'text'){
                                         $content = $conn -> real_escape_string($_POST['content']);
+                                    }elseif ($type === 'file'){
+                                        $content = $_FILES['content']['name'];
+                                        $content_image_temp = $_FILES['content']['tmp_name'];
+                                        move_uploaded_file($content_image_temp, "$content");
+                                    }
+
+
+//                                        echo $content;
 
                                         $sql = "INSERT INTO documents (doc_title, con_level, doc_file, date_created)
                                                     VALUES ('{$doc_title}','{$level}', '{$content}',now())";
@@ -66,7 +79,36 @@
 
 
                                     ?>
-                                    <form action="" method="post">
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <hr>
+                                        <div class="form-group text-dark">
+                                            <label for="content">Create File by :</label>
+                                            <select name="" id="" class=" form-control text-white mb-3" onchange="location = this.value;">
+                                                <option value="create_file.php">select :</option>
+                                                <option value="create_file.php?file=text">Text</option>
+                                                <option value="create_file.php?file=file">Upload</option>
+                                            </select>
+                                        </div>
+
+                                        <?php
+
+                                        if($type === 'text'){
+                                            echo "
+                                            <div class='form-group text-dark'>                                            
+                                            <textarea cols='30' rows='10' class='form-control text-dark bg-secondary'  id='content' name='content' ></textarea>
+                                        </div>
+                                            ";
+                                        }elseif ($type === 'file'){
+                                            echo "
+                                            <div class='form-group text-dark'>
+                                    
+                                            <input type='file' class='form-control' name='content'>
+                                        </div>
+                                            ";
+                                        }
+                                        ?>
+
+                                        <hr>
                                         <div class="form-group text-dark">
                                             <label for="content">Title</label>
                                             <input type="text" name="doc_title" class="form-control text-white"
@@ -81,12 +123,15 @@
                                                 <option value="Very High">Very High</option>
                                             </select>
                                         </div>
-                                        <div class=" form-group text-dark">
-                                            <label for="content">Content</label>
-                                            <textarea cols="30" rows="10" class="form-control text-dark bg-secondary"  id="content" type="hidden" name="content" ></textarea>
-                                            <trix-editor input="content"></trix-editor>
-                                        </div>
-                                        <button name="create" type="submit" class="btn btn-dark float-right"> Create File</button>
+<!--                                        <div class=" form-group text-dark">-->
+<!--                                            <label for="content">Content</label>-->
+<!--                                            <textarea cols="30" rows="10" class="form-control text-dark bg-secondary"  id="content" type="hidden" name="content" ></textarea>-->
+<!--                                        </div>-->
+
+
+
+
+                                <button name="create" type="submit" class="btn btn-dark float-right"> Create File</button>
                                     </form>
                                 </div>
 
@@ -101,4 +146,8 @@
 
     </div>
     <!-- content-wrapper ends -->
-<?php include "../includes/footer.php"; ?>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+        <?php include "../includes/footer.php"; ?>
+
