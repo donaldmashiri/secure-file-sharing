@@ -46,9 +46,6 @@
                             <div class="col-12">
                                 <div class="card card-body">
                                     <h3 class="text-white">File</h3>
-
-
-
                                     <?php
 
                                     $sql = "SELECT * FROM documents WHERE doc_id = {$_SESSION['open']}";
@@ -68,11 +65,11 @@
                                             $base2 = $row["base2"];
                                             $base3 = $row["base3"];
 
-                                            if($_SESSION['base_id'] === 1){
+                                            if($_SESSION['base_id'] == 1){
                                                 $clear = $base1;
-                                            }elseif ($_SESSION['base_id'] === 2){
+                                            }elseif ($_SESSION['base_id'] == 2){
                                                 $clear = $base2;
-                                            }elseif ($_SESSION['base_id'] === 3){
+                                            }elseif ($_SESSION['base_id'] == 3){
                                                 $clear = $base3;
                                             }
                                         }
@@ -105,11 +102,14 @@
 
                                     }
 
+//                                    echo $clear;
+
                                     if($clear != 0){
 
                                     ?>
                                         <form action="" method="post">
                                             <button name="decrypt" type="submit" class="btn btn-primary float-right m-2"> Decrypt</button>
+                                            <a href="print.php"  class="btn btn-danger float-right m-2"> Download</a>
                                         </form>
                                     <div class="card card-body text-dark bg-light">
                                         <h3 class="text-dark">  <?php echo $doc_title ?></h3>
@@ -143,8 +143,6 @@
                                 </div>
 
                             </div>
-
-
 
                             <script src="../assets/js/trix.js"></script>
                         </div>

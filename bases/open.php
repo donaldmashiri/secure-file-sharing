@@ -45,7 +45,7 @@
                                     <h3 class="text-dark">2 Factor Authentication</h3>
                                     <form action="" method="post">
                                         <div class="form-group text-dark">
-                                            <label for="content">Password</label>
+                                            <label for="content">Passcode</label>
                                             <input type="password" name="password" class="form-control bg-white"
                                                    placeholder="Enter Passcode" minlength="4" required>
                                         </div>
@@ -78,16 +78,11 @@
                                     } else {
                                         echo "<p class='alert alert-danger'>Incorrect Authentication Keys</p>";
                                     }
-
                                 }
 
-                                if($_SESSION['open']=== "open"){
-                                    include ('incf.php');
-                                }
+
 
                                 ?>
-
-
 
                             <script src="../assets/js/trix.js"></script>
                         </div>
